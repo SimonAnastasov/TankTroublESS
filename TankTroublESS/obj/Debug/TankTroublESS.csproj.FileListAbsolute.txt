@@ -3,9 +3,9 @@ C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\bin\D
 C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\bin\Debug\TankTroublESS.pdb
 C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.csproj.AssemblyReference.cache
 C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.csproj.SuggestedBindingRedirects.cache
-C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.Form1.resources
 C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.Properties.Resources.resources
 C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.csproj.GenerateResource.cache
 C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.csproj.CoreCompileInputs.cache
 C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.exe
 C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.pdb
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.TankTroublESS.resources
