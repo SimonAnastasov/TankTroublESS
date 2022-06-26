@@ -9,13 +9,15 @@ namespace TankTroublESS
 {
     public class PlayingField
     {
-        public Background Background { get; set; }
         public Rectangle ClientScreen { get; set; }
+        public Background Background { get; set; }
+        public Walls Walls { get; set; }
 
         public PlayingField(Rectangle ClientScreen)
         {
             this.ClientScreen = ClientScreen;
             Background = new Background(ClientScreen);
+            Walls = new Walls(ClientScreen);
         }
 
         public void ChangeDimensions(Rectangle ClientScreen)
@@ -28,6 +30,11 @@ namespace TankTroublESS
         public void DrawBackground(Graphics G)
         {
             Background.Draw(G);
+        }
+
+        public void DrawWalls(Graphics G)
+        {
+            Walls.CreateWalls(G);
         }
     }
 }

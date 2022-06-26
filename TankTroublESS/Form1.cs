@@ -18,7 +18,7 @@ namespace TankTroublESS
         {
             InitializeComponent();
 
-            ClientScreen = new Rectangle(this.ClientRectangle.X, 20, this.ClientRectangle.Width, this.ClientRectangle.Height - 40);
+            ClientScreen = new Rectangle(0, 25, this.ClientRectangle.Width + 6, this.ClientRectangle.Height - 50);
 
             PlayingField = new PlayingField(ClientScreen);
         }
@@ -26,6 +26,8 @@ namespace TankTroublESS
         private void TankTroublESS_Paint(object sender, PaintEventArgs e)
         {
             PlayingField.DrawBackground(e.Graphics);
+
+            PlayingField.DrawWalls(e.Graphics);
         }
 
         private void TankTroublESS_ResizeEnd(object sender, EventArgs e)
