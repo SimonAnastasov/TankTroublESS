@@ -17,6 +17,7 @@ namespace TankTroublESS
         public Rectangle ClientScreen { get; set; }
         public Tank TankGreen { get; set; }
         public Tank TankRed { get; set; }
+        public Random Random { get; set; }
 
         public TankTroublESS()
         {
@@ -26,14 +27,16 @@ namespace TankTroublESS
 
             PlayingField = new PlayingField(ClientScreen);
 
-            timer.Interval = 100;
+            timer.Interval = 50;
 
             timer.Start();
 
             DoubleBuffered = true;
 
-            TankGreen = new Tank(200, 200, 0, Properties.Resources.TG);
-            TankRed = new Tank(50, 50, 0, Properties.Resources.TR);
+            Random = new Random();
+
+            TankGreen = new Tank(100, 100, 0, Properties.Resources.TG);
+            TankRed = new Tank(500, 500, 0, Properties.Resources.TR);
         }
 
         private void TankTroublESS_Paint(object sender, PaintEventArgs e)
@@ -42,8 +45,10 @@ namespace TankTroublESS
 
             PlayingField.DrawWalls(e.Graphics);
 
-            TankGreen.Draw(e.Graphics, ClientScreen);
-            TankRed.Draw(e.Graphics, ClientScreen);
+            Graphics G = e.Graphics;
+
+            TankGreen.Draw(G, ClientScreen, 0, 0);
+            TankRed.Draw(G, ClientScreen, TankGreen.X, TankGreen.Y);
         }
 
         private void TankTroublESS_ResizeEnd(object sender, EventArgs e)
@@ -54,9 +59,44 @@ namespace TankTroublESS
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            TankGreen.Rotation += 3;
-            TankRed.Rotation += 358;
             Invalidate();
+        }
+
+        private void TankTroublESS_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TankTroublESS_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Green Tank
+            String Key = e.KeyCode.ToString();
+            if (Key == "D") { TankGreen.RotateRight = true; }
+            if (Key == "A") { TankGreen.RotateLeft = true; }
+            if (Key == "W") { TankGreen.MoveForward = true; }
+            if (Key == "S") { TankGreen.MoveBackward = true; }
+
+            // Red Tank
+            if (Key == "Right") TankRed.RotateRight = true;
+            if (Key == "Left") TankRed.RotateLeft = true;
+            if (Key == "Up") TankRed.MoveForward = true;
+            if (Key == "Down") TankRed.MoveBackward = true;
+        }
+
+        private void TankTroublESS_KeyUp(object sender, KeyEventArgs e)
+        {
+            // Green Tank
+            String Key = e.KeyCode.ToString();
+            if (Key == "D") { TankGreen.RotateRight = false; }
+            if (Key == "A") { TankGreen.RotateLeft = false; }
+            if (Key == "W") { TankGreen.MoveForward = false; }
+            if (Key == "S") { TankGreen.MoveBackward = false; }
+
+            // Red Tank
+            if (Key == "Right") TankRed.RotateRight = false;
+            if (Key == "Left") TankRed.RotateLeft = false;
+            if (Key == "Up") TankRed.MoveForward = false;
+            if (Key == "Down") TankRed.MoveBackward = false;
         }
     }
 }

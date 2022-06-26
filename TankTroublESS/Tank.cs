@@ -15,6 +15,11 @@ namespace TankTroublESS
         public int Rotation { get; set; }
         public Bitmap TankImage { get; set; }
 
+        public bool MoveForward { get; set; } = false;
+        public bool MoveBackward { get; set; } = false;
+        public bool RotateRight { get; set; } = false;
+        public bool RotateLeft { get; set; } = false;
+
         public Tank(int x, int y, int rotation, Bitmap tankImage)
         {
             X = x;
@@ -23,32 +28,61 @@ namespace TankTroublESS
             TankImage = tankImage;
         }
 
-        public void Draw(Graphics G, Rectangle ClientScreen)
+        public void Draw(Graphics G, Rectangle ClientScreen, int AdjustX, int AdjustY)
         {
-            Rotation %= 360;
+            SetTankBox();
 
             Dictionary<String, int> Dict = calculateWidthAndHeight();
             int newWidth = Dict["width"];
             int newHeight = Dict["height"];
 
-            Bitmap bit_map = new Bitmap(newWidth, newHeight);
-            Graphics gfx = Graphics.FromImage(bit_map);
+            Bitmap bmp = new Bitmap(newWidth, newHeight);
+            Graphics gfx = Graphics.FromImage(bmp);
             gfx.TranslateTransform(newWidth / 2, newHeight / 2);
             gfx.RotateTransform(Rotation);
             gfx.TranslateTransform(-TankImage.Width / 2, -TankImage.Height / 2);
             gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             gfx.DrawImage(TankImage, 0, 0);
-            G.TranslateTransform(X, Y);
-            G.DrawImage(bit_map, -bit_map.Width / 2, -bit_map.Height / 2);
+            G.TranslateTransform(X - AdjustX, Y - AdjustY);
+            G.DrawImage(bmp, -bmp.Width / 2, -bmp.Height / 2);
+        }
+
+        private void SetTankBox()
+        {
+            int ROTATE_BY = 10;
+            int SPEED = 10;
+
+            if (RotateRight)
+            {
+                Rotation += ROTATE_BY;
+            }
+            if (RotateLeft)
+            {
+                Rotation += (360 - ROTATE_BY);
+            }
+            if (MoveForward)
+            {
+                double Radians = (Math.PI / 180) * (Rotation - 270);
+                X = (int)(X + SPEED * Math.Cos(Radians));
+                Y = (int)(Y + SPEED * Math.Sin(Radians));
+            }
+            if (MoveBackward)
+            {
+                double Radians = (Math.PI / 180) * (Rotation - 90);
+                X = (int)(X + SPEED * Math.Cos(Radians));
+                Y = (int)(Y + SPEED * Math.Sin(Radians));
+            }
+
+            Rotation %= 360;
         }
 
         private Dictionary<String, int> calculateWidthAndHeight()
         {
             Dictionary<String, int> Dict = new Dictionary<String, int>();
 
-            int newWidth = 5;
-            int newHeight = 5;
+            int newWidth = 50;
+            int newHeight = 50;
 
             Bitmap bmp = new Bitmap(TankImage.Width, TankImage.Height);
             if (Rotation <= 90)

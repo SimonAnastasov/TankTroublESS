@@ -325,8 +325,11 @@
             this.Name = "TankTroublESS";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TankTroublESS";
+            this.Load += new System.EventHandler(this.TankTroublESS_Load);
             this.ResizeEnd += new System.EventHandler(this.TankTroublESS_ResizeEnd);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.TankTroublESS_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TankTroublESS_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TankTroublESS_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
