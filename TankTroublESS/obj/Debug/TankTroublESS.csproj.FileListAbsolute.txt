@@ -20,3 +20,14 @@ C:\Users\gorgi\Desktop\TankTrouble\TankTroublESS\obj\Debug\TankTroublESS.csproj.
 C:\Users\gorgi\Desktop\TankTrouble\TankTroublESS\obj\Debug\TankTroublESS.csproj.CoreCompileInputs.cache
 C:\Users\gorgi\Desktop\TankTrouble\TankTroublESS\obj\Debug\TankTroublESS.exe
 C:\Users\gorgi\Desktop\TankTrouble\TankTroublESS\obj\Debug\TankTroublESS.pdb
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.csproj.AssemblyReference.cache
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.csproj.SuggestedBindingRedirects.cache
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.TankTroublESS.resources
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.Properties.Resources.resources
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.csproj.GenerateResource.cache
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.csproj.CoreCompileInputs.cache
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.exe
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.pdb
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\bin\Debug\TankTroublESS.exe.config
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\bin\Debug\TankTroublESS.exe
+C:\Users\gglig\Desktop\VP\TB\TankTroublESS\bin\Debug\TankTroublESS.pdb

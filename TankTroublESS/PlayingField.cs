@@ -34,7 +34,7 @@ namespace TankTroublESS
 
         public void DrawWalls(Graphics G)
         {
-            Walls.CreateWalls(G);
+            Walls.DrawWalls(G);
         }
     }
 }

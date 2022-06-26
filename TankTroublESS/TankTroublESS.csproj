@@ -62,6 +62,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Rectangle.cs" />
+    <Compile Include="Tank.cs" />
     <Compile Include="Wall.cs" />
     <Compile Include="Walls.cs" />
     <EmbeddedResource Include="Form1.resx">

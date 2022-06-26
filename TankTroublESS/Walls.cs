@@ -25,10 +25,18 @@ namespace TankTroublESS
             WallsList = new List<Wall>();
         }
 
-        public void CreateWalls(Graphics G)
+        public void DrawWalls(Graphics G)
         {
-            Pen P = new Pen(Color.Black, PEN_WIDTH);
+            if (WallsList.Count == 0) CreateWalls();
 
+            foreach (Wall Wall in WallsList)
+            {
+                Wall.Draw(G);
+            }
+        }
+
+        public void CreateWalls()
+        {
             float RectWidth = (float)ClientScreen.Width / HORIZONTAL_DIVIDE;
             float RectHeight = (float)ClientScreen.Height / VERTICAL_DIVIDE;
 
@@ -40,11 +48,11 @@ namespace TankTroublESS
 
                     if (tmp1 == 0)
                     {
-                        G.DrawRectangle(P, ClientScreen.X + i * RectWidth + PEN_WIDTH / 2, ClientScreen.Y + j * RectHeight, RectWidth - PEN_WIDTH, 1);
+                        WallsList.Add(new Wall(new Rectangle(ClientScreen.X + i * RectWidth + PEN_WIDTH / 2, ClientScreen.Y + j * RectHeight, RectWidth - PEN_WIDTH, 1)));
                     }
                     else if (tmp1 == 1)
                     {
-                        G.DrawRectangle(P, ClientScreen.X + i * RectWidth + RectWidth, ClientScreen.Y + j * RectHeight + PEN_WIDTH / 2, 1, RectHeight - PEN_WIDTH);
+                        WallsList.Add(new Wall(new Rectangle(ClientScreen.X + i * RectWidth + RectWidth, ClientScreen.Y + j * RectHeight + PEN_WIDTH / 2, 1, RectHeight - PEN_WIDTH)));
                     }
                 }
             }
