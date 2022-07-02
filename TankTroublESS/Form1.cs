@@ -15,8 +15,6 @@ namespace TankTroublESS
     {
         public PlayingField PlayingField { get; set; }
         public Rectangle ClientScreen { get; set; }
-        public Tank TankGreen { get; set; }
-        public Tank TankRed { get; set; }
         public Random Random { get; set; }
 
         public TankTroublESS()
@@ -34,9 +32,6 @@ namespace TankTroublESS
             DoubleBuffered = true;
 
             Random = new Random();
-
-            TankGreen = new Tank(100, 100, 0, Properties.Resources.TG);
-            TankRed = new Tank(500, 500, 0, Properties.Resources.TR);
         }
 
         private void TankTroublESS_Paint(object sender, PaintEventArgs e)
@@ -45,10 +40,9 @@ namespace TankTroublESS
 
             PlayingField.DrawWalls(e.Graphics);
 
-            Graphics G = e.Graphics;
+            PlayingField.DrawTanks(e.Graphics);
 
-            TankGreen.Draw(G, ClientScreen, 0, 0);
-            TankRed.Draw(G, ClientScreen, TankGreen.X, TankGreen.Y);
+            Graphics G = e.Graphics;
         }
 
         private void TankTroublESS_ResizeEnd(object sender, EventArgs e)
@@ -71,32 +65,32 @@ namespace TankTroublESS
         {
             // Green Tank
             String Key = e.KeyCode.ToString();
-            if (Key == "D") { TankGreen.RotateRight = true; }
-            if (Key == "A") { TankGreen.RotateLeft = true; }
-            if (Key == "W") { TankGreen.MoveForward = true; }
-            if (Key == "S") { TankGreen.MoveBackward = true; }
+            if (Key == "D") { PlayingField.TankGreen.RotateRight = true; }
+            if (Key == "A") { PlayingField.TankGreen.RotateLeft = true; }
+            if (Key == "W") { PlayingField.TankGreen.MoveForward = true; }
+            if (Key == "S") { PlayingField.TankGreen.MoveBackward = true; }
 
             // Red Tank
-            if (Key == "Right") TankRed.RotateRight = true;
-            if (Key == "Left") TankRed.RotateLeft = true;
-            if (Key == "Up") TankRed.MoveForward = true;
-            if (Key == "Down") TankRed.MoveBackward = true;
+            if (Key == "Right") PlayingField.TankRed.RotateRight = true;
+            if (Key == "Left") PlayingField.TankRed.RotateLeft = true;
+            if (Key == "Up") PlayingField.TankRed.MoveForward = true;
+            if (Key == "Down") PlayingField.TankRed.MoveBackward = true;
         }
 
         private void TankTroublESS_KeyUp(object sender, KeyEventArgs e)
         {
             // Green Tank
             String Key = e.KeyCode.ToString();
-            if (Key == "D") { TankGreen.RotateRight = false; }
-            if (Key == "A") { TankGreen.RotateLeft = false; }
-            if (Key == "W") { TankGreen.MoveForward = false; }
-            if (Key == "S") { TankGreen.MoveBackward = false; }
+            if (Key == "D") { PlayingField.TankGreen.RotateRight = false; }
+            if (Key == "A") { PlayingField.TankGreen.RotateLeft = false; }
+            if (Key == "W") { PlayingField.TankGreen.MoveForward = false; }
+            if (Key == "S") { PlayingField.TankGreen.MoveBackward = false; }
 
             // Red Tank
-            if (Key == "Right") TankRed.RotateRight = false;
-            if (Key == "Left") TankRed.RotateLeft = false;
-            if (Key == "Up") TankRed.MoveForward = false;
-            if (Key == "Down") TankRed.MoveBackward = false;
+            if (Key == "Right") PlayingField.TankRed.RotateRight = false;
+            if (Key == "Left") PlayingField.TankRed.RotateLeft = false;
+            if (Key == "Up") PlayingField.TankRed.MoveForward = false;
+            if (Key == "Down") PlayingField.TankRed.MoveBackward = false;
         }
     }
 }

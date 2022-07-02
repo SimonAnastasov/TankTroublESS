@@ -12,33 +12,44 @@ namespace TankTroublESS
     {
         public int X { get; set; }
         public int Y { get; set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
         public int Rotation { get; set; }
         public Bitmap TankImage { get; set; }
+        public List<Wall> Walls { get; set; }
+        public Rectangle ClientScreen { get; set; }
 
         public bool MoveForward { get; set; } = false;
         public bool MoveBackward { get; set; } = false;
         public bool RotateRight { get; set; } = false;
         public bool RotateLeft { get; set; } = false;
 
-        public Tank(int x, int y, int rotation, Bitmap tankImage)
+        public Tank(int x, int y, int rotation, Bitmap tankImage, Rectangle clientScreen)
         {
             X = x;
             Y = y;
             Rotation = rotation;
             TankImage = tankImage;
+
+            ClientScreen = clientScreen;
+
+            calculateWidthAndHeight();
         }
 
-        public void Draw(Graphics G, Rectangle ClientScreen, int AdjustX, int AdjustY)
+        public void SetWalls(List<Wall> Walls)
+        {
+            this.Walls = Walls;
+        }
+
+        public void Draw(Graphics G, int AdjustX, int AdjustY)
         {
             SetTankBox();
 
-            Dictionary<String, int> Dict = calculateWidthAndHeight();
-            int newWidth = Dict["width"];
-            int newHeight = Dict["height"];
+            calculateWidthAndHeight();
 
-            Bitmap bmp = new Bitmap(newWidth, newHeight);
+            Bitmap bmp = new Bitmap(Width, Height);
             Graphics gfx = Graphics.FromImage(bmp);
-            gfx.TranslateTransform(newWidth / 2, newHeight / 2);
+            gfx.TranslateTransform(Width / 2, Height / 2);
             gfx.RotateTransform(Rotation);
             gfx.TranslateTransform(-TankImage.Width / 2, -TankImage.Height / 2);
             gfx.InterpolationMode = InterpolationMode.HighQualityBicubic;
@@ -55,32 +66,73 @@ namespace TankTroublESS
 
             if (RotateRight)
             {
-                Rotation += ROTATE_BY;
+                int tmpRotation = Rotation + ROTATE_BY;
+
+                Rotation = tmpRotation;
             }
             if (RotateLeft)
             {
-                Rotation += (360 - ROTATE_BY);
+                int tmpRotation = Rotation + (360 - ROTATE_BY);
+
+                Rotation = tmpRotation;
             }
             if (MoveForward)
             {
                 double Radians = (Math.PI / 180) * (Rotation - 270);
-                X = (int)(X + SPEED * Math.Cos(Radians));
-                Y = (int)(Y + SPEED * Math.Sin(Radians));
+                int tmpX = (int)(X + SPEED * Math.Cos(Radians));
+                int tmpY = (int)(Y + SPEED * Math.Sin(Radians));
+
+                if (CanMove(tmpX, tmpY))
+                {
+                    X = tmpX;
+                    Y = tmpY;
+                }
             }
             if (MoveBackward)
             {
                 double Radians = (Math.PI / 180) * (Rotation - 90);
-                X = (int)(X + SPEED * Math.Cos(Radians));
-                Y = (int)(Y + SPEED * Math.Sin(Radians));
+                int tmpX = (int)(X + SPEED * Math.Cos(Radians));
+                int tmpY = (int)(Y + SPEED * Math.Sin(Radians));
+
+                if (CanMove(tmpX, tmpY))
+                {
+                    X = tmpX;
+                    Y = tmpY;
+                }
             }
 
             Rotation %= 360;
         }
 
-        private Dictionary<String, int> calculateWidthAndHeight()
+        private bool CanMove(int X, int Y)
         {
-            Dictionary<String, int> Dict = new Dictionary<String, int>();
+            calculateWidthAndHeight();
 
+            Point TL = new Point(X, Y);
+            Point BR = new Point(X + Width, Y + Height);
+
+            int EXTRA_TANK_LENGTH = 30;
+
+            bool canMove = true;
+            foreach(Wall Wall in Walls)
+            {
+                Rectangle W = Wall.WallRect;
+                Point WTL = new Point((int)W.X, (int)W.Y);
+                Point WBR = new Point((int)(W.X + W.Width), (int)(W.Y + W.Height));
+
+
+                if (TL.X - EXTRA_TANK_LENGTH < WBR.X && BR.X - EXTRA_TANK_LENGTH > WTL.X &&
+                    TL.Y - EXTRA_TANK_LENGTH < WBR.Y && BR.Y - EXTRA_TANK_LENGTH > WTL.Y)
+                {
+                    canMove = false;
+                }
+            }
+
+            return canMove;
+        }
+
+        private void calculateWidthAndHeight()
+        {
             int newWidth = 50;
             int newHeight = 50;
 
@@ -106,10 +158,8 @@ namespace TankTroublESS
                 newHeight = (int)(bmp.Height * Math.Cos(2 * Math.PI * Rotation / 360) + bmp.Width * -Math.Sin(2 * Math.PI * Rotation / 360));
             }
 
-            Dict["width"] = newWidth;
-            Dict["height"] = newHeight;
-
-            return Dict;
+            Width = newWidth;
+            Height = newHeight;
         }
     }
 }

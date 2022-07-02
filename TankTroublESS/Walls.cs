@@ -56,6 +56,12 @@ namespace TankTroublESS
                     }
                 }
             }
+
+            // Walls on the sides
+            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y, ClientScreen.X + ClientScreen.Width, PEN_WIDTH)));
+            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y + ClientScreen.Height - (PEN_WIDTH-1), ClientScreen.X + ClientScreen.Width, PEN_WIDTH)));
+            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y, PEN_WIDTH, ClientScreen.Y + ClientScreen.Height)));
+            WallsList.Add(new Wall(new Rectangle(ClientScreen.X + ClientScreen.Width - (PEN_WIDTH*2+2), ClientScreen.Y, PEN_WIDTH, ClientScreen.Y + ClientScreen.Height)));
         }
     }
 }
