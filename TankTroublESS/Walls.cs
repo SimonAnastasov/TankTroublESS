@@ -13,7 +13,7 @@ namespace TankTroublESS
 
         public static readonly int VERTICAL_DIVIDE = 7;
 
-        public static readonly int PEN_WIDTH = 4;
+        public static readonly int PEN_WIDTH = 5;
         public List<Wall> WallsList { get; set; }
         public Rectangle ClientScreen { get; set; }
         public Random Random { get; set; }

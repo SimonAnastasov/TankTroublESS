@@ -9,7 +9,7 @@ namespace TankTroublESS
 {
     public class Wall
     {
-        public static readonly int PEN_WIDTH = 4;
+        public static readonly int PEN_WIDTH = 5;
         public Rectangle WallRect { get; set; }
         public bool IsHorizontal { get; set; }
 

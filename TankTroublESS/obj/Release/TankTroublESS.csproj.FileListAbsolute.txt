@@ -1,0 +1,13 @@
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\bin\Release\TankTroublESS.exe.config
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\bin\Release\TankTroublESS.exe
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\bin\Release\TankTroublESS.pdb
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.csproj.AssemblyReference.cache
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.csproj.SuggestedBindingRedirects.cache
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.TankTroublESS.resources
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.HowToPlayForm.resources
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.AboutUsForm.resources
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.Properties.Resources.resources
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.csproj.GenerateResource.cache
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.csproj.CoreCompileInputs.cache
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.exe
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Release\TankTroublESS.pdb

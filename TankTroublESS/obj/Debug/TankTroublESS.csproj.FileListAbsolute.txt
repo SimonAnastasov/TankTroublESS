@@ -31,3 +31,5 @@ C:\Users\gglig\Desktop\VP\TB\TankTroublESS\obj\Debug\TankTroublESS.pdb
 C:\Users\gglig\Desktop\VP\TB\TankTroublESS\bin\Debug\TankTroublESS.exe.config
 C:\Users\gglig\Desktop\VP\TB\TankTroublESS\bin\Debug\TankTroublESS.exe
 C:\Users\gglig\Desktop\VP\TB\TankTroublESS\bin\Debug\TankTroublESS.pdb
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.HowToPlayForm.resources
+C:\Users\simon\Desktop\Finki\A 3 VP 3 A\Proekt\TankTroublESS\TankTroublESS\obj\Debug\TankTroublESS.AboutUsForm.resources

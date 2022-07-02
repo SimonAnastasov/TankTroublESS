@@ -118,7 +118,6 @@ namespace TankTroublESS
             // Green Tank
             if (TankGreen.IsAlive)
             {
-
                 Point TL = new Point(TankGreen.X, TankGreen.Y);
                 Point BR = new Point(TankGreen.X + TankGreen.Width, TankGreen.Y + TankGreen.Height);
                 for (int i = 0; i < Bullets.Count; i++)

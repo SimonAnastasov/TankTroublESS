@@ -17,6 +17,8 @@ namespace TankTroublESS
         public Rectangle ClientScreen { get; set; }
         public Random Random { get; set; }
         public int TimeToNewGame { get; set; } = 120;
+        public int GreenTankPoints { get; set; } = 0;
+        public int RedTankPoints { get; set; } = 0;
 
         public TankTroublESS()
         {
@@ -61,17 +63,21 @@ namespace TankTroublESS
             if (TimeToNewGame == 0)
             {
                 TimeToNewGame = 120;
+
+                if (!PlayingField.TankRed.IsAlive && PlayingField.TankGreen.IsAlive) GreenTankPoints++;
+                if (PlayingField.TankRed.IsAlive && !PlayingField.TankGreen.IsAlive) RedTankPoints++;
+
+                tssGreenTank.Text = "Green Tank: " + GreenTankPoints;
+                tssRedTank.Text = "Red Tank: " + RedTankPoints;
+
+                PlayingField.TankMovingMedia.Pause();
+
                 PlayingField = new PlayingField(ClientScreen);
             }
 
             PlayingField.CheckIfBothTanksDead();
 
             Invalidate();
-        }
-
-        private void TankTroublESS_Load(object sender, EventArgs e)
-        {
-            
         }
 
         private void TankTroublESS_KeyDown(object sender, KeyEventArgs e)
@@ -128,6 +134,18 @@ namespace TankTroublESS
         {
             ClientScreen = new Rectangle(0, 25, this.ClientRectangle.Width + 6, this.ClientRectangle.Height - 50);
             PlayingField = new PlayingField(ClientScreen);
+        }
+
+        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HowToPlayForm HowToPlayForm = new HowToPlayForm();
+            HowToPlayForm.ShowDialog();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutUsForm AboutUsForm = new AboutUsForm();
+            AboutUsForm.ShowDialog();
         }
     }
 }
