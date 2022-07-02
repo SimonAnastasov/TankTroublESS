@@ -11,10 +11,12 @@ namespace TankTroublESS
     {
         public static readonly int PEN_WIDTH = 4;
         public Rectangle WallRect { get; set; }
+        public bool IsHorizontal { get; set; }
 
-        public Wall(Rectangle WallRect)
+        public Wall(Rectangle WallRect, bool IsHorizontal)
         {
             this.WallRect = WallRect;
+            this.IsHorizontal = IsHorizontal;
         }
 
         public void Draw(Graphics G)

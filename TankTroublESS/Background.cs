@@ -10,8 +10,8 @@ namespace TankTroublESS
     public class Background
     {
         public static readonly int HORIZONTAL_DIVIDE = 12;
-        public static readonly int VERTICAL_DIVIDE = 7;
 
+        public static readonly int VERTICAL_DIVIDE = 7;
         public Rectangle ClientScreen { get; set; }
 
         public Background(Rectangle ClientScreen)

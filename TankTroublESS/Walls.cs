@@ -10,7 +10,9 @@ namespace TankTroublESS
     public class Walls
     {
         public static readonly int HORIZONTAL_DIVIDE = 12;
+
         public static readonly int VERTICAL_DIVIDE = 7;
+
         public static readonly int PEN_WIDTH = 4;
         public List<Wall> WallsList { get; set; }
         public Rectangle ClientScreen { get; set; }
@@ -48,20 +50,20 @@ namespace TankTroublESS
 
                     if (tmp1 == 0)
                     {
-                        WallsList.Add(new Wall(new Rectangle(ClientScreen.X + i * RectWidth + PEN_WIDTH / 2, ClientScreen.Y + j * RectHeight, RectWidth - PEN_WIDTH, 1)));
+                        WallsList.Add(new Wall(new Rectangle(ClientScreen.X + i * RectWidth + PEN_WIDTH / 2, ClientScreen.Y + j * RectHeight, RectWidth - PEN_WIDTH, 1), true));
                     }
                     else if (tmp1 == 1)
                     {
-                        WallsList.Add(new Wall(new Rectangle(ClientScreen.X + i * RectWidth + RectWidth, ClientScreen.Y + j * RectHeight + PEN_WIDTH / 2, 1, RectHeight - PEN_WIDTH)));
+                        WallsList.Add(new Wall(new Rectangle(ClientScreen.X + i * RectWidth + RectWidth, ClientScreen.Y + j * RectHeight + PEN_WIDTH / 2, 1, RectHeight - PEN_WIDTH), false));
                     }
                 }
             }
 
             // Walls on the sides
-            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y, ClientScreen.X + ClientScreen.Width, PEN_WIDTH)));
-            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y + ClientScreen.Height - (PEN_WIDTH-1), ClientScreen.X + ClientScreen.Width, PEN_WIDTH)));
-            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y, PEN_WIDTH, ClientScreen.Y + ClientScreen.Height)));
-            WallsList.Add(new Wall(new Rectangle(ClientScreen.X + ClientScreen.Width - (PEN_WIDTH*2+2), ClientScreen.Y, PEN_WIDTH, ClientScreen.Y + ClientScreen.Height)));
+            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y, ClientScreen.X + ClientScreen.Width, PEN_WIDTH), true));
+            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y + ClientScreen.Height - (PEN_WIDTH-1), ClientScreen.X + ClientScreen.Width, PEN_WIDTH), true));
+            WallsList.Add(new Wall(new Rectangle(ClientScreen.X, ClientScreen.Y, PEN_WIDTH, ClientScreen.Y + ClientScreen.Height), false));
+            WallsList.Add(new Wall(new Rectangle(ClientScreen.X + ClientScreen.Width - (PEN_WIDTH*2+2), ClientScreen.Y, PEN_WIDTH, ClientScreen.Y + ClientScreen.Height), false));
         }
     }
 }

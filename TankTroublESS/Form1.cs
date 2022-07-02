@@ -16,6 +16,7 @@ namespace TankTroublESS
         public PlayingField PlayingField { get; set; }
         public Rectangle ClientScreen { get; set; }
         public Random Random { get; set; }
+        public int TimeToNewGame { get; set; } = 120;
 
         public TankTroublESS()
         {
@@ -25,7 +26,7 @@ namespace TankTroublESS
 
             PlayingField = new PlayingField(ClientScreen);
 
-            timer.Interval = 50;
+            timer.Interval = 30;
 
             timer.Start();
 
@@ -41,24 +42,36 @@ namespace TankTroublESS
             PlayingField.DrawWalls(e.Graphics);
 
             PlayingField.DrawTanks(e.Graphics);
-
-            Graphics G = e.Graphics;
-        }
-
-        private void TankTroublESS_ResizeEnd(object sender, EventArgs e)
-        {
-            PlayingField.ChangeDimensions(ClientScreen);
-            Invalidate();
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
+            PlayingField.CheckIfTankHit();
+
+            if (PlayingField.TankMovingMedia.Position.TotalSeconds >= 100)
+            {
+                PlayingField.TankMovingMedia.Position = new TimeSpan(0, 0, 0);
+            }
+
+            if (PlayingField.CheckIfOneTankDead())
+            {
+                TimeToNewGame--;
+            }
+
+            if (TimeToNewGame == 0)
+            {
+                TimeToNewGame = 120;
+                PlayingField = new PlayingField(ClientScreen);
+            }
+
+            PlayingField.CheckIfBothTanksDead();
+
             Invalidate();
         }
 
         private void TankTroublESS_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void TankTroublESS_KeyDown(object sender, KeyEventArgs e)
@@ -69,12 +82,14 @@ namespace TankTroublESS
             if (Key == "A") { PlayingField.TankGreen.RotateLeft = true; }
             if (Key == "W") { PlayingField.TankGreen.MoveForward = true; }
             if (Key == "S") { PlayingField.TankGreen.MoveBackward = true; }
+            if (Key == "Q") { PlayingField.TankGreen.Fire(); }
 
             // Red Tank
             if (Key == "Right") PlayingField.TankRed.RotateRight = true;
             if (Key == "Left") PlayingField.TankRed.RotateLeft = true;
             if (Key == "Up") PlayingField.TankRed.MoveForward = true;
             if (Key == "Down") PlayingField.TankRed.MoveBackward = true;
+            if (Key == "Space") { PlayingField.TankRed.Fire(); }
         }
 
         private void TankTroublESS_KeyUp(object sender, KeyEventArgs e)
@@ -91,6 +106,28 @@ namespace TankTroublESS
             if (Key == "Left") PlayingField.TankRed.RotateLeft = false;
             if (Key == "Up") PlayingField.TankRed.MoveForward = false;
             if (Key == "Down") PlayingField.TankRed.MoveBackward = false;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlayingField = new PlayingField(ClientScreen);
+        }
+
+        private void TankTroublESS_Resize(object sender, EventArgs e)
+        {
+            ClientScreen = new Rectangle(0, 25, this.ClientRectangle.Width + 6, this.ClientRectangle.Height - 50);
+            PlayingField = new PlayingField(ClientScreen);
+        }
+
+        private void TankTroublESS_ResizeEnd(object sender, EventArgs e)
+        {
+            ClientScreen = new Rectangle(0, 25, this.ClientRectangle.Width + 6, this.ClientRectangle.Height - 50);
+            PlayingField = new PlayingField(ClientScreen);
         }
     }
 }
