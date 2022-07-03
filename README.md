@@ -1,7 +1,9 @@
 # За тимот ESS:
 
 Проект на: [Симон Анастасов 201003](https://simonanastasov.netlify.app), [Давид Ѓорѓиевски 203018](https://the-david-gorgievski-3-0.vercel.app/), [Глигорчо Глигоров 203125](https://gligorcogligorov.github.io/GligorcoGligorov/index.html)
+
 Изработен во рамки на Финки, за предметот Визуелно Програмирање, воден од Дејан Ѓорѓевиќ и Стефан Андонов.
+
 Изработен на: 2.7.2022г.
 
 # Функционалности на играта:
